@@ -86,10 +86,13 @@ public class MathChallengeGUI {
 	        
 	        Stage stage2 = (Stage) this.btnStart.getScene().getWindow();
 	        stage2.close();
+	        update();
 		}
     }
 
-	
+	private void update() {
+		labQuestion.setText(mc.createNewQuestion());
+	}
 	
 	
 	
