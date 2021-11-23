@@ -2,16 +2,16 @@ package model;
 
 public class MathChallenge {
 	private String question;
+	private String correctAnswer;
 	private String answer1;
 	private String answer2;
 	private String answer3;
-	private String answer4;
 	
 	public MathChallenge() {
 		
 	}
 	
-	public String createNewQuestion() {
+	public void createNewQuestion() {
 		int num1;
 		int num2;
 		char operator = assignOperator();
@@ -21,12 +21,11 @@ public class MathChallenge {
 			num2 = (int)(Math.random()*99);
 			
 		}while(!areDivisible(num1, num2, operator));
-		
+		setCorrectAnswer(createCorrectAnswer(num1, num2, operator));
 		String strNum1 = String.valueOf(num1);
 		String strNum2 = String.valueOf(num2);
 		String newQuest = strNum1 + " " + operator + " " + strNum2;
-		
-		return newQuest;
+		setQuestion(newQuest);
 	}
 	
 	private char assignOperator() {
@@ -48,9 +47,38 @@ public class MathChallenge {
 		return true;
 	}
 	
+	private String createCorrectAnswer(int num1, int num2, char operator) {
+		String correctAnswer;
+		if(operator == '+') {
+			correctAnswer = String.valueOf(num1 + num2);
+			createIncorrectAnswer(num1 + num2);
+		}else if(operator == '-') {
+			correctAnswer = String.valueOf(num1 - num2);
+			createIncorrectAnswer(num1 - num2);
+		}else if(operator == '*') {
+			correctAnswer = String.valueOf(num1 * num2);
+			createIncorrectAnswer(num1 * num2);
+		}else {
+			correctAnswer = String.valueOf(num1 / num2);
+			createIncorrectAnswer(num1 / num2);
+		}
+		return correctAnswer;
+	}
 	
+	private void createIncorrectAnswer(int correctA) {
+		int answer1 = (int)(Math.random() * ((correctA + 10) - (correctA - 10)));
+		setAnswer1(String.valueOf(answer1));
+		int answer2 = (int)(Math.random() * ((correctA + 10) - (correctA - 10)));
+		setAnswer1(String.valueOf(answer2));
+		int answer3 = (int)(Math.random() * ((correctA + 10) - (correctA - 10)));
+		setAnswer1(String.valueOf(answer3));
+	}
 	
 
+	
+	
+	
+	
 	public String getQuestion() {
 		return question;
 	}
@@ -59,6 +87,14 @@ public class MathChallenge {
 		this.question = question;
 	}
 
+	public String getCorrectAnswer() {
+		return correctAnswer;
+	}
+
+	public void setCorrectAnswer(String correctAnswer) {
+		this.correctAnswer = correctAnswer;
+	}
+	
 	public String getAnswer1() {
 		return answer1;
 	}
@@ -82,14 +118,7 @@ public class MathChallenge {
 	public void setAnswer3(String answer3) {
 		this.answer3 = answer3;
 	}
-
-	public String getAnswer4() {
-		return answer4;
-	}
-
-	public void setAnswer4(String answer4) {
-		this.answer4 = answer4;
-	}
+	
 	
 	
 	

@@ -1,6 +1,9 @@
 package ui;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -91,7 +94,21 @@ public class MathChallengeGUI {
     }
 
 	private void update() {
-		labQuestion.setText(mc.createNewQuestion());
+		mc.createNewQuestion();
+		labQuestion.setText(mc.getQuestion());
+		
+		Random rand = new Random();
+		List<String> answers = Arrays.asList(mc.getCorrectAnswer(), mc.getAnswer1(), mc.getAnswer2(), mc.getAnswer3());
+		
+		String[] randomAnswer = new String[answers.size()];
+		for (int i = 0; i < 4; i++) {
+            int randomNum = rand.nextInt(answers.size());
+            randomAnswer[i] = answers.get(randomNum);
+        }
+		btnAnswer1.setText(randomAnswer[0]);
+		btnAnswer2.setText(randomAnswer[1]);
+		btnAnswer3.setText(randomAnswer[2]);
+		btnAnswer4.setText(randomAnswer[3]);
 	}
 	
 	
