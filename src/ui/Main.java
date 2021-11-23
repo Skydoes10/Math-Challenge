@@ -10,7 +10,7 @@ public class Main extends Application{
 	
 	public Main() {
 		mc = new MathChallenge();
-		mcgui = new MathChallengeGUI();
+		mcgui = new MathChallengeGUI(mc);
 	}
 
 	public static void main(String[] args) {
