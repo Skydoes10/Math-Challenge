@@ -1,11 +1,17 @@
 package model;
 
+import thread.TimerThread;
+
 public class MathChallenge {
+	public final int MINUTES = 2;
+	public final int SECONDS = 0;
+	
 	private String question;
 	private String correctAnswer;
 	private String answer1;
 	private String answer2;
 	private String answer3;
+	private TimerThread timerT;
 	
 	public MathChallenge() {
 		
@@ -74,7 +80,11 @@ public class MathChallenge {
 		setAnswer1(String.valueOf(answer3));
 	}
 	
-
+	public void settingTimer() {
+		TimerThread t = new TimerThread(MINUTES, SECONDS, true);
+		t.run();
+	}
+	
 	
 	
 	

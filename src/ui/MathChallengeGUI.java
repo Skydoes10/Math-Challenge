@@ -19,6 +19,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.MathChallenge;
+import thread.TimerThread;
 
 public class MathChallengeGUI {
 	
@@ -90,6 +91,7 @@ public class MathChallengeGUI {
 	        Stage stage2 = (Stage) this.btnStart.getScene().getWindow();
 	        stage2.close();
 	        update();
+	        runTimer();
 		}
     }
 
@@ -109,9 +111,13 @@ public class MathChallengeGUI {
 		btnAnswer2.setText(randomAnswer[1]);
 		btnAnswer3.setText(randomAnswer[2]);
 		btnAnswer4.setText(randomAnswer[3]);
+		
 	}
 	
-	
+	private void runTimer() {
+		
+		
+	}
 	
 	
 	
