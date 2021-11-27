@@ -2,8 +2,8 @@ package ui;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +19,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.MathChallenge;
-import thread.TimerThread;
+import model.Player;
+import model.Timer;
 
 public class MathChallengeGUI {
 	
@@ -33,7 +34,6 @@ public class MathChallengeGUI {
     @FXML
     private Button btnStart;
 
-	
 	
 	//GamePane
     @FXML
@@ -66,13 +66,19 @@ public class MathChallengeGUI {
 	
 	
 	private MathChallenge mc;
+	private Player player;
+	private Timer timer;
 	
     public MathChallengeGUI(MathChallenge mc) {
 		this.mc = mc;
 	}
+    
+    public void initialize() {
+//    	timer = new Timer(2, 0, true);
+    }
 
 	@FXML
-    private void start(ActionEvent event) throws IOException {
+    private void start(ActionEvent event) throws IOException, InterruptedException {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Math Challenge");
 		if(tfName.getText().equals("")) {
@@ -90,37 +96,98 @@ public class MathChallengeGUI {
 	        
 	        Stage stage2 = (Stage) this.btnStart.getScene().getWindow();
 	        stage2.close();
-	        update();
-	        runTimer();
+	        
+	        labScore.setText("0");
+	        updateQuestions();
+	        
+//	        new TimerThread(timer, this).start();
 		}
     }
 
-	private void update() {
+	private void updateQuestions() {
 		mc.createNewQuestion();
 		labQuestion.setText(mc.getQuestion());
 		
-		Random rand = new Random();
 		List<String> answers = Arrays.asList(mc.getCorrectAnswer(), mc.getAnswer1(), mc.getAnswer2(), mc.getAnswer3());
+		Collections.shuffle(answers);
 		
-		String[] randomAnswer = new String[answers.size()];
-		for (int i = 0; i < 4; i++) {
-            int randomNum = rand.nextInt(answers.size());
-            randomAnswer[i] = answers.get(randomNum);
-        }
-		btnAnswer1.setText(randomAnswer[0]);
-		btnAnswer2.setText(randomAnswer[1]);
-		btnAnswer3.setText(randomAnswer[2]);
-		btnAnswer4.setText(randomAnswer[3]);
-		
+		btnAnswer1.setText(answers.get(0));
+		btnAnswer2.setText(answers.get(1));
+		btnAnswer3.setText(answers.get(2));
+		btnAnswer4.setText(answers.get(3));
 	}
 	
-	private void runTimer() {
-		
-		
-	}
+	@FXML
+	private void nextQuestionButton1(ActionEvent event) {
+		updateQuestions();
+		if(btnAnswer1.getText().equals(mc.getCorrectAnswer())) {
+			labScore.setText(mc.updateScore(1));
+		}else {
+			labScore.setText(mc.updateScore(-1));
+		}
+    }
+
+    @FXML
+    private void nextQuestionButton2(ActionEvent event) {
+    	updateQuestions();
+		if(btnAnswer1.getText().equals(mc.getCorrectAnswer())) {
+			labScore.setText(mc.updateScore(1));
+		}else {
+			labScore.setText(mc.updateScore(-1));
+		}
+    }
+
+    @FXML
+    private void nextQuestionButton3(ActionEvent event) {
+    	updateQuestions();
+		if(btnAnswer1.getText().equals(mc.getCorrectAnswer())) {
+			labScore.setText(mc.updateScore(1));
+		}else {
+			labScore.setText(mc.updateScore(-1));
+		}
+    }
+
+    @FXML
+    private void nextQuestionButton4(ActionEvent event) {
+    	updateQuestions();
+		if(btnAnswer1.getText().equals(mc.getCorrectAnswer())) {
+			labScore.setText(mc.updateScore(1));
+		}else {
+			labScore.setText(mc.updateScore(-1));
+		}
+    }
+    
 	
+//	public void updateTimer() {
+//		labTime.setText(timer.toString());
+//	}
 	
+//	private void finishGame() throws IOException {
+//		if(mc.stopTimer()) {
+//			Alert alert = new Alert(AlertType.INFORMATION);
+//			alert.setTitle("Math Challenge");
+//			alert.setHeaderText("Se ha acabado el tiempo");
+//			alert.setContentText("Tu puntaje es: " + labScore);
+//			alert.showAndWait();
+//			if(!alert.isShowing()) {
+//				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ScoresPane.fxml"));
+//				fxmlLoader.setController(this);
+//				Parent mainPane = fxmlLoader.load();
+//
+//				Stage stage = new Stage();
+//		        stage.setTitle("Math Challenge");
+//		        stage.setScene(new Scene(mainPane));
+//		        stage.show();
+//		        
+//		        Stage stage2 = (Stage) this.btnAnswer1.getScene().getWindow();
+//		        stage2.close();
+//			}
+//		}
+//		
+//	}
+//	
 	
+
 	
 	
 	

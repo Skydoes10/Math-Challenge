@@ -1,20 +1,20 @@
 package model;
 
-import thread.TimerThread;
-
 public class MathChallenge {
-	public final int MINUTES = 2;
-	public final int SECONDS = 0;
-	
 	private String question;
 	private String correctAnswer;
 	private String answer1;
 	private String answer2;
 	private String answer3;
-	private TimerThread timerT;
 	
-	public MathChallenge() {
-		
+	private Player player;
+	
+	public MathChallenge(Player p) {
+		this.player = p;
+	}
+	
+	public void createPlayer(String name, int score) {
+		Player player = new Player(name, score);
 	}
 	
 	public void createNewQuestion() {
@@ -72,23 +72,50 @@ public class MathChallenge {
 	}
 	
 	private void createIncorrectAnswer(int correctA) {
-		int answer1 = (int)(Math.random() * ((correctA + 10) - (correctA - 10)));
+		int max_value = correctA + 10;
+		int min_value = correctA - 10;
+		
+//		Set<Integer> answers = new TreeSet<Integer>();
+//		boolean aux = true;
+//		while(aux) {
+//			int randomNum = (int)(Math.random() * (max_value - min_value));
+//			
+//			if(randomNum != correctA) {
+//				if(answers.size() <= 3) {
+//					answers.add(randomNum);
+//				}else{
+//					aux = false;
+//				}
+//			}
+//		}
+//		ArrayList<>
+//		setAnswer1();
+		
+		int answer1 = (int)(Math.random() * (max_value - min_value));
 		setAnswer1(String.valueOf(answer1));
-		int answer2 = (int)(Math.random() * ((correctA + 10) - (correctA - 10)));
-		setAnswer1(String.valueOf(answer2));
-		int answer3 = (int)(Math.random() * ((correctA + 10) - (correctA - 10)));
-		setAnswer1(String.valueOf(answer3));
+		int answer2 = (int)(Math.random() * (max_value - min_value));
+		setAnswer2(String.valueOf(answer2));
+		int answer3 = (int)(Math.random() * (max_value - min_value));
+		setAnswer3(String.valueOf(answer3));
 	}
 	
-	public void settingTimer() {
-		TimerThread t = new TimerThread(MINUTES, SECONDS, true);
-		t.run();
+	public String updateScore(int num) {
+		if(num < 0) {
+			player.subtractScore();
+		}else {
+			player.plusScore();
+		}
+		return String.valueOf(player.getScore());
 	}
 	
 	
 	
 	
 	
+	public Player getPlayer() {
+		return player;
+	}
+
 	public String getQuestion() {
 		return question;
 	}
@@ -128,8 +155,5 @@ public class MathChallenge {
 	public void setAnswer3(String answer3) {
 		this.answer3 = answer3;
 	}
-	
-	
-	
 	
 }

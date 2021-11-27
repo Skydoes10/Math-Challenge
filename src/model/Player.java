@@ -12,6 +12,14 @@ public class Player {
 		this.left = null;
 		this.right = null;
 	}
+	
+	public void plusScore() {
+		setScore(score + 10);
+	}
+	
+	public void subtractScore() {
+		setScore(score - 10);
+	}
 
 	public String getName() {
 		return name;

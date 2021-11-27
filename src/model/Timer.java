@@ -13,33 +13,33 @@ public class Timer {
 	
 	public void start() {
 		while(start) {
-			seconds--;
-			if(seconds == 0) {
-				minutes--;
+			if(seconds != 0) {
+				seconds--;                               
+			}else{
+				if(minutes != 0){
+					seconds = 59;
+					minutes--;
+				}
 			}
 		}
 	}
 	
 	public String toString() {
-		return minutes + ":" + seconds;
+		if(seconds < 10 && minutes < 10) {
+			return "0" + minutes + ":0" + seconds;
+		}else if(seconds < 10) {
+			return minutes + ":0" + seconds;
+		}else {
+			return "0" + minutes + ":" + seconds;
+		}
 	}
 
 	public int getMinutes() {
 		return minutes;
 	}
 
-	public void setMinutes(int minutes) {
-		this.minutes = minutes;
-	}
-
 	public int getSeconds() {
 		return seconds;
 	}
-
-	public void setSeconds(int seconds) {
-		this.seconds = seconds;
-	}
 	
-	
-
 }

@@ -1,50 +1,33 @@
 package thread;
 
+import javafx.application.Platform;
+import model.Timer;
+import ui.MathChallengeGUI;
+
 public class TimerThread extends Thread{
-	private int minutes;
-	private int seconds;
-	private boolean start;
+	private Timer timer;
+	private MathChallengeGUI mcGUI;
 	
-	public TimerThread(int minutes, int seconds, boolean start) {
-		this.minutes = minutes;
-		this.seconds = seconds;
-		this.start = start;
+	public TimerThread(Timer timer, MathChallengeGUI mcGUI) {
+		this.timer = timer;
+		this.mcGUI = mcGUI;
 	}
 	
 	public void run() {
-		try {
-			while(start) {
-				if(seconds != 0) {
-					seconds--;                               
-				}else{
-					if(minutes != 0){
-						seconds = 59;
-						minutes--;
-					}else{                         
-						break; 
-					}
+		while(timer.getMinutes() != 0 && timer.getSeconds() != 0) {
+			timer.start();
+			
+			Platform.runLater(new Thread() {
+				public void run() {
+					mcGUI.updateTimer();
 				}
+			});
+			
+			try {
 				sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
-		}catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public boolean stopTimer() {
-		if(seconds == 0 && minutes == 0) {
-			return true;
-		}
-		return false;
-	}
-	
-	public String toString() {
-		if(seconds < 10 && minutes < 10) {
-			return "0" + minutes + ":0" + seconds;
-		}else if(seconds < 10) {
-			return minutes + ":0" + seconds;
-		}else {
-			return "0" + minutes + ":" + seconds;
 		}
 	}
 	
