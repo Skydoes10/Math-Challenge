@@ -86,6 +86,8 @@ public class MathChallengeGUI {
 			alert.setContentText("Por favor ingrese un nombre valido.");
 			alert.showAndWait();
 		}else {
+			mc.createPlayer(tfName.getText());
+			
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GamePane.fxml"));
 			fxmlLoader.setController(this);
 			Parent mainPane = fxmlLoader.load();
@@ -104,6 +106,13 @@ public class MathChallengeGUI {
 	        CountDown cd = new CountDown();
 	        CountDownThread thread = new CountDownThread(cd, this);
 	        thread.start();
+	        
+//	        if(cd.getSeconds() == -1) {		//Alerta para cuando se acabe el tiempo (NO FUNCIONA :/ )
+//	        	Alert alert2 = new Alert(AlertType.INFORMATION);
+//	        	alert2.setTitle("Math Challenge");
+//	        	alert2.setContentText("Se termino el tiempo");
+//	        	alert2.showAndWait();
+//	        }
 		}
     }
 	

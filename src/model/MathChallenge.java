@@ -13,8 +13,9 @@ public class MathChallenge {
 		
 	}
 	
-	public void createPlayer(String name, int score) {
-		Player player = new Player(name, score);
+	public void createPlayer(String name) {
+		Player newPlayer = new Player(name);
+		player = newPlayer;
 	}
 	
 	public void createNewQuestion() {

@@ -6,9 +6,9 @@ public class Player {
 	private Player left;
 	private Player right;
 	
-	public Player(String name, int score) {
+	public Player(String name) {
 		this.name = name;
-		this.score = score;
+		this.score = 0;
 		this.left = null;
 		this.right = null;
 	}
