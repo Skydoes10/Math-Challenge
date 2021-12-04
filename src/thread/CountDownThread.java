@@ -18,6 +18,7 @@ public class CountDownThread extends Thread{
 			cd.setCount(String.valueOf(cd.getSeconds()));
 			Platform.runLater(() ->  mcGUI.getLabTime().setText(cd.getCount()));
 			cd.startCountDown();
+			Platform.runLater(() ->  mcGUI.getRectangleBar().setWidth(mcGUI.getRectangleBar().getWidth()+9));
 			
 			try {
 				sleep(1000);

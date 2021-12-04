@@ -2,11 +2,11 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <Pane fx:id="gamePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="287.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
@@ -57,7 +57,6 @@
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <ProgressBar fx:id="progressBar" layoutX="40.0" layoutY="217.0" prefHeight="17.0" prefWidth="470.0" progress="0.0" />
       <Label fx:id="labScore" layoutX="542.0" layoutY="38.0" text="//Puntos//">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -67,5 +66,6 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
+      <Rectangle fx:id="rectangleBar" arcHeight="5.0" arcWidth="5.0" fill="#9dd1ff" height="20.0" layoutX="40.0" layoutY="216.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" width="450.0" />
    </children>
 </Pane>

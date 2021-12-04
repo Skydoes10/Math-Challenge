@@ -4,10 +4,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,10 +13,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import model.CountDown;
 import model.MathChallenge;
@@ -64,7 +61,7 @@ public class MathChallengeGUI {
     private Label labTime;
 
     @FXML
-    private ProgressBar progressBar;
+    private Rectangle rectangleBar;
 	
 	
 	
@@ -101,6 +98,7 @@ public class MathChallengeGUI {
 	        stage2.close();
 	        
 	        labScore.setText("0");
+	        rectangleBar.setWidth(0);
 	        updateQuestions();
 	        
 	        CountDown cd = new CountDown();
@@ -171,6 +169,14 @@ public class MathChallengeGUI {
 
 	public Label getLabTime() {
 		return labTime;
+	}
+
+	public Rectangle getRectangleBar() {
+		return rectangleBar;
+	}
+
+	public void setRectangleBar(Rectangle rectangleBar) {
+		this.rectangleBar = rectangleBar;
 	}
     
     
