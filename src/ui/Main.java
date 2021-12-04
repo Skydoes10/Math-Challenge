@@ -12,7 +12,7 @@ public class Main extends Application{
 	private MathChallengeGUI mcgui;
 	
 	public Main() {
-		mc = new MathChallenge(null);
+		mc = new MathChallenge();
 		mcgui = new MathChallengeGUI(mc);
 	}
 

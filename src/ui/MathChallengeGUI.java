@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,9 +21,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.CountDown;
 import model.MathChallenge;
-import model.Player;
-import model.Timer;
+import thread.CountDownThread;
 
 public class MathChallengeGUI {
 	
@@ -66,15 +69,13 @@ public class MathChallengeGUI {
 	
 	
 	private MathChallenge mc;
-	private Player player;
-	private Timer timer;
 	
     public MathChallengeGUI(MathChallenge mc) {
 		this.mc = mc;
 	}
     
     public void initialize() {
-//    	timer = new Timer(2, 0, true);
+    	
     }
 
 	@FXML
@@ -100,10 +101,12 @@ public class MathChallengeGUI {
 	        labScore.setText("0");
 	        updateQuestions();
 	        
-//	        new TimerThread(timer, this).start();
+	        CountDown cd = new CountDown();
+	        CountDownThread thread = new CountDownThread(cd, this);
+	        thread.start();
 		}
     }
-
+	
 	private void updateQuestions() {
 		mc.createNewQuestion();
 		labQuestion.setText(mc.getQuestion());
@@ -156,11 +159,34 @@ public class MathChallengeGUI {
 			labScore.setText(mc.updateScore(-1));
 		}
     }
+
+	public Label getLabTime() {
+		return labTime;
+	}
     
-	
-//	public void updateTimer() {
-//		labTime.setText(timer.toString());
-//	}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
 	
 //	private void finishGame() throws IOException {
 //		if(mc.stopTimer()) {

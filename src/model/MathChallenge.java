@@ -9,8 +9,8 @@ public class MathChallenge {
 	
 	private Player player;
 	
-	public MathChallenge(Player p) {
-		this.player = p;
+	public MathChallenge() {
+		
 	}
 	
 	public void createPlayer(String name, int score) {
@@ -112,6 +112,25 @@ public class MathChallenge {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
 	public Player getPlayer() {
 		return player;
 	}
