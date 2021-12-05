@@ -99,9 +99,6 @@ public class MathChallengeGUI {
 		this.mc = mc;
 	}
     
-    public void initialize() {
-    }
-    
 	@FXML
     private void start(ActionEvent event) throws IOException, InterruptedException {
 		Alert alert = new Alert(AlertType.ERROR);
