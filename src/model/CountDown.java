@@ -5,7 +5,7 @@ public class CountDown {
 	private String count;
 
 	public CountDown() {
-		this.seconds = 50;
+		this.seconds = 5;
 	}
 	
 	public void startCountDown() {

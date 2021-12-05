@@ -1,17 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="369.0" prefWidth="527.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView fx:id="tvScores" layoutX="200.0" layoutY="62.0" prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="tvScores" layoutX="36.0" layoutY="66.0" prefHeight="161.0" prefWidth="334.0">
         <columns>
-          <TableColumn prefWidth="134.0" text="Nombre" />
-          <TableColumn prefWidth="65.0" text="Puntaje" />
+          <TableColumn fx:id="tcPosition" prefWidth="74.0" text="Position" />
+            <TableColumn fx:id="tcName" prefWidth="162.0" text="Name" />
+          <TableColumn fx:id="tcScore" prefWidth="97.0" text="Score" />
         </columns>
       </TableView>
+      <Label layoutX="159.0" layoutY="24.0" text="SCORES">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="401.0" layoutY="78.0" mnemonicParsing="false" onAction="#playAgain" text="Play Again">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCloseGame" layoutX="422.0" layoutY="270.0" mnemonicParsing="false" onAction="#closeGame" text="Exit">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="383.0" layoutY="132.0" mnemonicParsing="false" onAction="#deleteScore" text="Delete my score">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="labInfoPlayer" layoutX="36.0" layoutY="314.0" prefHeight="35.0" prefWidth="334.0" text="//Info player//">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Button layoutX="414.0" layoutY="212.0" mnemonicParsing="false" onAction="#searchPlayer" text="Search">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <TextField fx:id="tfNameSearch" layoutX="401.0" layoutY="185.0" prefHeight="25.0" prefWidth="89.0" promptText="Name" />
    </children>
 </Pane>

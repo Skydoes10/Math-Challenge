@@ -1,5 +1,7 @@
 package thread;
 
+import java.io.IOException;
+
 import javafx.application.Platform;
 import model.CountDown;
 import ui.MathChallengeGUI;
@@ -26,6 +28,14 @@ public class CountDownThread extends Thread{
 				e.printStackTrace();
 			}
 		}
+		
+		Platform.runLater(() ->  {
+			try {
+				mcGUI.endGame();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		});
 	}
 
 }

@@ -11,7 +11,7 @@
 
 <Pane fx:id="gamePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="287.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="40.0" layoutY="33.0" text="Pregunta">
+      <Label layoutX="40.0" layoutY="33.0" text="Question">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -61,7 +61,7 @@
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <Label fx:id="labScore1" layoutX="470.0" layoutY="38.0" text="PUNTOS:">
+      <Label fx:id="labScore1" layoutX="483.0" layoutY="38.0" text="Score:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
